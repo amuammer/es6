@@ -8,19 +8,19 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.all('*',function(req,res,next){
-  console.log(req.method+' '+req.url);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-   res.setHeader(
-     'Access-Control-Allow-Methods',
-     'GET, HEAD, PUT, PATCH, POST, DELETE'
-   );
+app.all("*", (req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, HEAD, PUT, PATCH, POST, DELETE",
+  );
 
-   res.setHeader(
-     'Access-Control-Allow-Headers',
-     'Origin, X-Requested-With, Content-Type, Accept,authorization'
-   );
-    next();
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept,authorization",
+  );
+  next();
 });
 
 app.get('/', (req, res,next) => {
