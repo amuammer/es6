@@ -1,11 +1,12 @@
-import express from 'express'
-import bodyParser from 'body-parser';
-let app = express();
+import express from "express";
+import bodyParser from "body-parser";
+
+const app = express();
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false,
 }));
 
 app.all("*", (req, res, next) => {
@@ -18,16 +19,16 @@ app.all("*", (req, res, next) => {
 
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept,authorization",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
   );
   next();
 });
 
-app.get('/', (req, res,next) => {
-	res.send('Hello World!')
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
-
-app.listen(8000, () => {
-    console.log('server started - 8000');
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`server started - ${port}`);
 });
